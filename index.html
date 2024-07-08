@@ -10,6 +10,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const worldName = urlParams.get('worldName');
             const playerName = urlParams.get('playerName');
+            const playerName = urlParams.get('logInfo');
 
             if (worldName && playerName) {
                 // Send the data to the serverless function
@@ -19,7 +20,7 @@
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Origin': 'https://fallensworkshop.com' 
                     },
-                    body: JSON.stringify({ worldName, playerName })
+                    body: JSON.stringify({ worldName, playerName, logInfo })
                 })
                 .then(response => response.json())
                 .then(data => {
