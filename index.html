@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Request Handler</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Parse URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const worldName = urlParams.get('worldName');
+            const playerName = urlParams.get('playerName');
+
+            if (worldName && playerName) {
+                // Send the data to the serverless function
+                fetch('https://fallensworkshop.com/api/vrclog', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ worldName, playerName })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Dynamic Request Handler</h1>
+    <p>Check the console for logging results.</p>
+</body>
+</html>
