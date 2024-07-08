@@ -13,7 +13,7 @@
             const playerName = urlParams.get('logInfo');
 
             if (worldName && playerName) {
-                // Send the data to the serverless function
+                // Send the data to the server function bypassing VRChat Gen URL Check
                 fetch('https://fallensworkshop.com/api/vrclog', {
                     method: 'POST',
                     headers: {
